@@ -1,6 +1,7 @@
 package com.ll.sb20231221;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -34,4 +35,21 @@ public class HomeController {
             @RequestParam(defaultValue = "0") int b) {
         return "계산결과 : %d".formatted(a + b);
     }
+
+    @GetMapping("/calc21")
+    public String calc21(Model model){
+        model.addAttribute("v1", "안녕");
+        model.addAttribute("v2", "반가워");
+        return "calc21";
+    }
+
+    int num = 0;
+
+    @GetMapping("/calc22")
+    @ResponseBody
+    public int calc22() {
+        num++;
+        return num;
+    }
+
 }
